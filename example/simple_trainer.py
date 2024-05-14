@@ -79,18 +79,13 @@ class SimpleTrainer:
         lr: float = 0.01,
         save_imgs: bool = False,
     ):
-        optimizer = optim.Adam([self.rgbs, self.means, self.scales, self.opacities, self.quats], lr)
+        optimizer = optim.Adam(
+            [self.rgbs, self.means, self.scales, self.opacities, self.quats], lr
+        )
         mse_loss = torch.nn.MSELoss()
         frames = []
         for iter in (pbar := tqdm(range(iterations))):
-            (
-                xys,
-                depths,
-                radii,
-                conics,
-                compensation,
-                cov3d,
-            ) = project_gaussians(
+            (xys, depths, radii, conics, compensation, cov3d,) = project_gaussians(
                 self.means,
                 self.scales,
                 1,
