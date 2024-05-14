@@ -1,17 +1,16 @@
 import math
-import os
-from argparse import ArgumentParser, BooleanOptionalAction
-from pathlib import Path
-from typing import Optional
-
 import numpy as np
+import os
 import torch
 from PIL import Image
+from argparse import ArgumentParser, BooleanOptionalAction
+from pathlib import Path
 from torch import Tensor, optim
 from tqdm import tqdm
+from typing import Optional
 
 from gsplat.project_gaussians import project_gaussians
-from gsplat.rasterize import rasterize_gaussian
+from gsplat.rasterize import rasterize_gaussians
 
 
 class SimpleTrainer:
